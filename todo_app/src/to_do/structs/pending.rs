@@ -17,4 +17,4 @@ impl Pending {
 impl Create for Pending{}
 impl Edit for Pending{}
 impl Get for Pending{}
-impl Edit for Pending{}
+impl Delete for Pending{}
