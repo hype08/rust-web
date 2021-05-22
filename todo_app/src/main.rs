@@ -1,13 +1,12 @@
 mod to_do;
-use to_do::structs::done::Done;
-use to_do::structs::pending::Pending;
+use to_do::to_do_factory;
+use to_do::ItemTypes;
 
 fn main() {
-    let done: Done = Done::new("shopping");
-    println!("{}", done.super_struct.title);
-    println!("{}", done.super_struct.status);
+    let to_do_item: Result<ItemTypes, &'static str> = to_do_factory("pending", "make");
 
-    let pending: Pending = Pending::new("laundry");
-    println!("{}", pending.super_struct.title);
-    println!("{}", pending.super_struct.status);
+    match to_do_item.unwrap() {
+        ItemTypes::Pending(item) => println!("it's pending with title {}", item.super_struct.title),
+        ItemTypes::Done(item) => println!("it's pending with title {}", item.super_struct.title),
+    }
 }
