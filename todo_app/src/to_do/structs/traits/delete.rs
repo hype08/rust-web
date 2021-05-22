@@ -1,8 +1,10 @@
-use serde_json::Map;
-use serde_json::value::Value;
 use crate::state::write_to_file;
-pub fn delete(&self, title: &String, state: &mut Map<String, Value>) {
-    state.remove(title);
-    write_to_file("./state.json", state);
-    println!("\n\n {} is being deleted\n\n", title);
+use serde_json::value::Value;
+use serde_json::Map;
+pub trait Delete {
+    fn delete(&self, title: &String, state: &mut Map<String, Value>) {
+        state.remove(title);
+        write_to_file(String::from("./state.json"), state);
+        println!("\n\n{} is being deleted\n\n", title);
+    }
 }
