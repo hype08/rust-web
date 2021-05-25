@@ -7,12 +7,16 @@ use super::path::Path;
 
 // instead of passing actix_web::App, we pass ServiceConfig struct to define routes.
 pub fn auth_factory(app: &mut web::ServiceConfig) {
-  let base_path: Path = Path{prefix: String::from("/auth")};
+    let base_path: Path = Path {
+        prefix: String::from("/auth"),
+    };
 
-  app
-    .route(&base_path.define(String::from("/login")),
-      web::get().to(login::login))
-    .route(&base_path.define(String::from("/logout")),
-      web::get().to(login::login))
-
+    app.route(
+        &base_path.define(String::from("/login")),
+        web::get().to(login::login),
+    )
+    .route(
+        &base_path.define(String::from("/logout")),
+        web::get().to(login::login),
+    )
 }

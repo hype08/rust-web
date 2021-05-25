@@ -1,6 +1,6 @@
 use actix_web::web;
-mod path;
 mod auth;
+mod path;
 pub fn views_factory(app: &mut web::ServiceConfig) {
-  auth::auth_factory(app);
+    auth::auth_factory(app);
 }
